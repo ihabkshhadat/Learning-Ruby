@@ -16,4 +16,4 @@ end
 Helper.write_csv(products.sort_by(&:price),'sort_product.csv',['id',' product',' price ($)'],"\t")
 
 
-products.select { |item| item.price >= 150}
+puts products.select { |item| item.price >= 150}.sort_by(&:name)
