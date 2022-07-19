@@ -36,10 +36,9 @@ class StringComposer
     is_valid, message =string_validation(regex)
     results = ""
     if is_valid
-      keys = @input_str.split(/\d+/)
-      counts = @input_str.split(/[a-z]/i)
+      keys = @input_str.scan /[a-z]\d+/i
       for index in 0...keys.length
-        results += keys[index]*counts[index+1].to_i
+        results += keys[index][0] *(keys[index].scan /\d+/)[0].to_i
       end
       puts results
     else
