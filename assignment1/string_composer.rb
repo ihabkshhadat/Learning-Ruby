@@ -11,23 +11,21 @@ class StringComposer
   def composed
     regex = /^[a-z]+$/i
     is_valid, message =string_validation(regex)
+    key_counter = Hash.new
     if is_valid
-      char = @input_str[0]
       count=1
-      result = ""
-      for index in 1...@input_str.length
-        if char == @input_str[index]
-          count += 1
-          if index == @input_str.length-1
-            result += "#{char}#{count}"
-          end
+      @input_str.split('').each do |char|
+        if key_counter.key?(char)
+          key_counter[char]+=1
         else
-          result += "#{char}#{count}"
-          count = 1
-          char = @input_str[index]
+          key_counter[char]=1
         end
       end
-      return result
+      result = ""
+      key_counter.each do |key,val|
+      result+="#{key}#{val}"
+    end
+    puts result
     else
       puts message
     end
