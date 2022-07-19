@@ -34,18 +34,14 @@ class StringComposer
   def decomposed
     regex = /^([a-z]\d+)+$/i
     is_valid, message =string_validation(regex)
+    results = ""
     if is_valid
-      temp = @input_str
-      result = ""
-      while temp.length > 0
-        val = temp.match /[a-z]\d+/i
-        char = val[0][0]
-        val[0][1..-1].to_i.times do 
-          result += char
-        end
-        temp = temp[val[0].length..-1]
+      keys = @input_str.split(/\d+/)
+      counts = @input_str.split(/[a-z]/i)
+      for index in 0...keys.length
+        results += keys[index]*counts[index+1].to_i
       end
-      return result
+      puts results
     else
       puts message
     end
