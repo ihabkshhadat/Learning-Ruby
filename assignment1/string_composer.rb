@@ -15,11 +15,7 @@ class StringComposer
     if is_valid
       count=1
       @input_str.split('').each do |char|
-        if key_counter.key?(char)
-          key_counter[char]+=1
-        else
-          key_counter[char]=1
-        end
+        key_counter.include?(char)? key_counter[char]+=1 : key_counter[char]=1
       end
       result = ""
       key_counter.each do |key,val|

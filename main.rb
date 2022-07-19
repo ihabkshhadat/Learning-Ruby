@@ -7,9 +7,9 @@ require_relative "assignment4/array.rb"
 include Helper
 include NumericArray
 
-a = 'd4a6'
-# a = 'ddddaaaaaa'
-puts StringComposer.new(a).decomposed
+# a = 'd4a6'
+a = 'ddddaaaaaa'
+puts StringComposer.new(a).composed
 
 
 
@@ -84,3 +84,6 @@ res.split(' ').each do |item|
 end
 
 puts lt_two_char
+
+
+puts 'aaddd'.chop
