@@ -4,16 +4,14 @@ class StringComposer
   end
 
   def string_validation(regex)
-    if @input_str =~ regex
-        return true    
-    end
-    puts "Input Value Not a Valid Input"
-    return false
+    message = "Input Value Not a Valid Input"
+    return @input_str =~ regex, message
   end
 
   def composed
     regex = /^[a-z]+$/i
-    if string_validation(regex)
+    is_valid, message =string_validation(regex)
+    if is_valid
       char = @input_str[0]
       count=1
       result = ""
@@ -30,12 +28,15 @@ class StringComposer
         end
       end
       return result
+    else
+      puts message
     end
   end
 
   def decomposed
     regex = /^([a-z]\d+)+$/i
-    if string_validation(regex)
+    is_valid, message =string_validation(regex)
+    if is_valid
       temp = @input_str
       result = ""
       while temp.length > 0
@@ -47,6 +48,8 @@ class StringComposer
         temp = temp[val[0].length..-1]
       end
       return result
+    else
+      puts message
     end
   end
 end
