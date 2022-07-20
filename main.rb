@@ -49,7 +49,7 @@ def test_assignment_4_p2
   #   end  
   # end
 
-  puts array.join(' ').gsub!(/(,\s?)(\w)/){$1+$2.capitalize}
+  puts array.join(' ').gsub!(/(,\s?)([a-z])/i){$1+$2.capitalize}
   
   lt_two_char = array.reject{|item| item.length>2}
   puts lt_two_char
