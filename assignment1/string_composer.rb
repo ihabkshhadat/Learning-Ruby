@@ -13,15 +13,10 @@ class StringComposer
     is_valid, message =string_validation(regex)
     key_counter = Hash.new
     if is_valid
-      count=1
       @input_str.split('').each do |char|
-        key_counter.include?(char)? key_counter[char]+=1 : key_counter[char]=1
+        key_counter.include?(char)? key_counter[char]+=1  : key_counter[char]=1
       end
-      result = ""
-      key_counter.each do |key,val|
-      result+="#{key}#{val}"
-    end
-    puts result
+      puts key_counter.to_a.join
     else
       puts message
     end
@@ -34,7 +29,9 @@ class StringComposer
     if is_valid
       keys = @input_str.scan /[a-z]\d+/i
       keys.each do |item|
-        results += item[0] * ( item.scan /\d+/).first.to_i 
+        # results += item.slice(0) * item.slice(1..-1).to_i 
+        results += item.match(/([a-z])(\d+)/){$1 * $2.to_i} 
+
       end
       puts results
     else
