@@ -7,7 +7,11 @@ class Product
   end
   
   def to_s
-    return "#{@id} #{@name} #{@price}"
+    "#{@id} #{@name} #{@price}"
+  end
+
+  def to_json
+    {'id'=>@id, 'name'=>@name, 'price'=> @price}
   end
 
 end

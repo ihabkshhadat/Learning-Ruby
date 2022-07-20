@@ -33,8 +33,8 @@ class StringComposer
     results = ""
     if is_valid
       keys = @input_str.scan /[a-z]\d+/i
-      for index in 0...keys.length
-        results += keys[index][0] *(keys[index].scan /\d+/)[0].to_i
+      keys.each do |item|
+        results += item[0] * ( item.scan /\d+/).first.to_i 
       end
       puts results
     else

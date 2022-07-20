@@ -1,13 +1,7 @@
 module NumericArray
   
   def array_validation(items)
-    valid_array = []
-    items.each do |item|  
-      if ((item.is_a? Float) || (item.is_a? Integer))
-        valid_array.append(item)
-      end 
-    end
-    return valid_array
+    items.reject{|item| !(item.is_a?(Float) || item.is_a?(Integer))}
   end
   
   def print_array(items)
@@ -23,10 +17,7 @@ module NumericArray
   end
 
   def convert_float(items)
-    for index in (0..items.length)
-    items[index] = items[index].to_i.abs
-    end
-    return items
+    items.map{|item| item.to_i.abs}
   end
 
 
