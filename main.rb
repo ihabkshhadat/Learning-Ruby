@@ -42,16 +42,9 @@ def test_assignment_4_p2
 
   str = "hello my name is heba , i have 25 years, graduate With good GPA 90 , and I am Working on a New task"
   str = str.gsub(/\d+/,'').downcase
-  array = str.split(' ')
-  # array.each_with_index do |value,index|
-  #   if index != 0
-  #     array[index] = value.capitalize if array[index-1] == ',' && !value.empty?
-  #   end  
-  # end
-
-  puts array.join(' ').gsub!(/(,\s?)([a-z])/i){$1+$2.capitalize}
-  
-  lt_two_char = array.reject{|item| item.length>2}
+  tokens = str.split(' ')
+  puts str.gsub!(/(,\s?)([a-z])/i){$1+$2.capitalize}
+  lt_two_char = tokens.reject{|word| word.length>2}
   puts lt_two_char
 end
 
